@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XertiQ iframe Embed Test</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        min-height: 100vh;
+        padding: 30px 20px;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .header {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .header h1 {
+        color: #2d3748;
+        margin-bottom: 10px;
+        font-size: 2rem;
+      }
+
+      .header p {
+        color: #718096;
+        font-size: 1.1rem;
+      }
+
+      .embed-section {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .embed-section h2 {
+        color: #2d3748;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+      }
+
+      .embed-section p {
+        color: #718096;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .iframe-container {
+        position: relative;
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      iframe {
+        width: 100%;
+        border: none;
+        display: block;
+      }
+
+      .code-snippet {
+        background: #1a202c;
+        color: #e2e8f0;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        overflow-x: auto;
+        margin-top: 15px;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #48bb78;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 16px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-left: 10px;
+      }
+
+      .info-box {
+        background: #edf2f7;
+        border-left: 4px solid #4299e1;
+        padding: 15px;
+        border-radius: 4px;
+        margin: 20px 0;
+      }
+
+      .info-box strong {
+        color: #2d3748;
+      }
+
+      .info-box p {
+        margin: 5px 0;
+        color: #4a5568;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 15px;
+        }
+
+        .header,
+        .embed-section {
+          padding: 20px;
+        }
+
+        .header h1 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1>🖼️ XertiQ iframe Embed Test</h1>
+        <p>Testing iframe-based embedding of verification widget</p>
+        <span class="badge">Third Party Integration</span>
+      </div>
+
+      <!-- Basic iframe Embed -->
+      <div class="embed-section">
+        <h2>📦 Basic iframe Embed</h2>
+        <p>
+          Simple iframe embed without auto-verification. Users can search for
+          any document.
+        </p>
+
+        <div class="iframe-container">
+          <iframe
+            src="https://xertiq-frontend.vercel.app/embed/verify"
+            height="700"
+            title="XertiQ Document Verification"
+            allow="clipboard-read; clipboard-write"
+          ></iframe>
+        </div>
+
+        <div class="code-snippet">
+          &lt;iframe src="https://xertiq-frontend.vercel.app/embed/verify"
+          width="100%" height="700" frameborder="0" style="border: 1px solid
+          #e0e0e0; border-radius: 12px;" title="XertiQ Document Verification"
+          &gt;&lt;/iframe&gt;
+        </div>
+      </div>
+
+      <!-- Auto-Verify iframe Embed -->
+      <div class="embed-section">
+        <h2>🎯 Auto-Verify iframe Embed</h2>
+        <p>iframe with pre-filled document ID for automatic verification.</p>
+
+        <div class="info-box">
+          <strong>📝 Note:</strong>
+          <p>
+            Replace <code>YOUR_DOC_ID</code> with an actual document ID from
+            your system.
+          </p>
+          <p>
+            Example:
+            <code>cert_certificate_John_Doe_1_1768197767683_abc123</code>
+          </p>
+        </div>
+
+        <div class="iframe-container">
+          <iframe
+            src="https://xertiq-frontend.vercel.app/embed/verify?doc=test_certificate_id"
+            height="700"
+            title="Certificate Verification"
+            allow="clipboard-read; clipboard-write"
+          ></iframe>
+        </div>
+
+        <div class="code-snippet">
+          &lt;iframe
+          src="https://xertiq-frontend.vercel.app/embed/verify?doc=YOUR_DOC_ID"
+          width="100%" height="700" frameborder="0" style="border: 1px solid
+          #e0e0e0; border-radius: 12px;" title="Certificate Verification"
+          &gt;&lt;/iframe&gt;
+        </div>
+      </div>
+
+      <!-- Responsive iframe -->
+      <div class="embed-section">
+        <h2>📱 Responsive iframe Wrapper</h2>
+        <p>iframe that maintains aspect ratio and is fully responsive.</p>
+
+        <div
+          style="
+            position: relative;
+            padding-bottom: 87.5%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 20px;
+          "
+        >
+          <iframe
+            src="https://xertiq-frontend.vercel.app/embed/verify"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border: 1px solid #e0e0e0;
+            "
+            title="Responsive XertiQ Verification"
+            allow="clipboard-read; clipboard-write"
+          ></iframe>
+        </div>
+
+        <div class="code-snippet">
+          &lt;div style="position: relative; padding-bottom: 87.5%; height: 0;
+          overflow: hidden;"&gt; &lt;iframe
+          src="https://xertiq-frontend.vercel.app/embed/verify" style="position:
+          absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0"
+          title="XertiQ Verification" &gt;&lt;/iframe&gt; &lt;/div&gt;
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="embed-section">
+        <h2>📚 Integration Instructions</h2>
+
+        <h3 style="color: #2d3748; margin: 20px 0 10px">URL Parameters</h3>
+        <ul style="color: #4a5568; line-height: 1.8; padding-left: 20px">
+          <li>
+            <code>?doc=DOCUMENT_ID</code> - Pre-fill and auto-verify by document
+            ID
+          </li>
+          <li>
+            <code>?hash=DOCUMENT_HASH</code> - Pre-fill and auto-verify by hash
+          </li>
+        </ul>
+
+        <h3 style="color: #2d3748; margin: 20px 0 10px">Recommended Heights</h3>
+        <ul style="color: #4a5568; line-height: 1.8; padding-left: 20px">
+          <li><strong>Basic widget:</strong> 700px</li>
+          <li><strong>Auto-verify:</strong> 700-800px</li>
+          <li><strong>Mobile:</strong> Auto-adjusts</li>
+        </ul>
+
+        <h3 style="color: #2d3748; margin: 20px 0 10px">Browser Support</h3>
+        <ul style="color: #4a5568; line-height: 1.8; padding-left: 20px">
+          <li>✅ Chrome 90+</li>
+          <li>✅ Firefox 88+</li>
+          <li>✅ Safari 14+</li>
+          <li>✅ Edge 90+</li>
+          <li>✅ Mobile browsers</li>
+        </ul>
+
+        <div class="info-box" style="margin-top: 20px">
+          <strong>💡 Pro Tip:</strong>
+          <p>
+            For better integration without iframes, use the JavaScript widget
+            method!
+          </p>
+          <p>See <code>xertiq-embed-demo.html</code> for examples.</p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div
+        style="text-align: center; color: white; padding: 20px; opacity: 0.9"
+      >
+        <p>
+          <strong>XertiQ</strong> - Blockchain-Secured Document Verification
+        </p>
+        <p style="font-size: 14px; margin-top: 10px">
+          This test page demonstrates iframe embedding for third-party
+          integration
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

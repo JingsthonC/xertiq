@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XertiQ Widget - Simple Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      h1 {
+        color: #2d3748;
+        text-align: center;
+      }
+      .info {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🛡️ XertiQ Verification Widget Test</h1>
+
+    <div class="info">
+      <h2>This is a simple test page for the XertiQ embeddable widget</h2>
+      <p><strong>Test Instructions:</strong></p>
+      <ol>
+        <li>The widget should load below this text</li>
+        <li>Try entering a document ID or hash</li>
+        <li>Click "Verify" to test the verification process</li>
+        <li>Check that the widget is responsive on mobile</li>
+      </ol>
+    </div>
+
+    <!-- XertiQ Widget Container -->
+    <div id="xertiq-verify-widget"></div>
+
+    <!-- Load Widget Script -->
+    <script src="https://xertiq-frontend.vercel.app/embed-widget.js"></script>
+  </body>
+</html>

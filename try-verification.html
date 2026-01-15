@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XertiQ Verification Test</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        min-height: 100vh;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        max-width: 900px;
+        width: 100%;
+      }
+
+      .header {
+        text-align: center;
+        color: white;
+        margin-bottom: 30px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+
+      .test-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+      }
+
+      .test-card h2 {
+        color: #2d3748;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+
+      .test-options {
+        display: grid;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .test-option {
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 20px;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .test-option:hover {
+        border-color: #667eea;
+        background: #f7fafc;
+        transform: translateY(-2px);
+      }
+
+      .test-option h3 {
+        color: #2d3748;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .test-option p {
+        color: #718096;
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
+
+      .test-option .code {
+        background: #1a202c;
+        color: #e2e8f0;
+        padding: 15px;
+        border-radius: 8px;
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        overflow-x: auto;
+        margin-bottom: 10px;
+      }
+
+      .btn {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .btn:hover {
+        background: #5568d3;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-secondary {
+        background: #48bb78;
+      }
+
+      .btn-secondary:hover {
+        background: #38a169;
+      }
+
+      .info-box {
+        background: #edf2f7;
+        border-left: 4px solid #4299e1;
+        padding: 20px;
+        border-radius: 4px;
+        margin: 20px 0;
+      }
+
+      .info-box h4 {
+        color: #2d3748;
+        margin-bottom: 10px;
+      }
+
+      .info-box p {
+        color: #4a5568;
+        line-height: 1.6;
+      }
+
+      .info-box ul {
+        margin-top: 10px;
+        padding-left: 20px;
+      }
+
+      .info-box li {
+        color: #4a5568;
+        margin-bottom: 5px;
+      }
+
+      .widget-container {
+        margin-top: 30px;
+        padding: 30px;
+        background: #f7fafc;
+        border-radius: 12px;
+        border: 2px dashed #cbd5e0;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #48bb78;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 16px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1>🛡️ Try XertiQ Verification</h1>
+        <p>Test the blockchain-secured document verification system</p>
+      </div>
+
+      <!-- Main Test Card -->
+      <div class="test-card">
+        <h2>Choose Your Test Method</h2>
+
+        <div class="info-box">
+          <h4>📝 Before You Start</h4>
+          <p>
+            <strong>Important:</strong> You'll need a valid document ID from
+            your XertiQ system to test verification.
+          </p>
+          <p>
+            <strong>Document ID Format:</strong>
+            <code>cert_certificate_Name_123_timestamp_randomid</code>
+          </p>
+        </div>
+
+        <div class="test-options">
+          <!-- Option 1: Direct Verification Page -->
+          <div class="test-option">
+            <h3>🌐 Option 1: Full Verification Page</h3>
+            <p>
+              Open the complete verification page with full features and
+              navigation.
+            </p>
+            <div class="code">https://xertiq-frontend.vercel.app/verify</div>
+            <a
+              href="https://xertiq-frontend.vercel.app/verify"
+              target="_blank"
+              class="btn"
+            >
+              Open Full Page
+            </a>
+          </div>
+
+          <!-- Option 2: Embedded Widget -->
+          <div class="test-option">
+            <h3>📦 Option 2: Embedded Widget View</h3>
+            <p>
+              View the minimal embedded version designed for third-party
+              websites.
+            </p>
+            <div class="code">
+              https://xertiq-frontend.vercel.app/embed/verify
+            </div>
+            <a
+              href="https://xertiq-frontend.vercel.app/embed/verify"
+              target="_blank"
+              class="btn"
+            >
+              Open Embed View
+            </a>
+          </div>
+
+          <!-- Option 3: Test with Document ID -->
+          <div class="test-option">
+            <h3>🎯 Option 3: Auto-Verify with Document ID</h3>
+            <p>
+              Pre-fill a document ID for instant verification (replace
+              YOUR_DOC_ID with actual ID).
+            </p>
+            <div class="code">
+              https://xertiq-frontend.vercel.app/verify?doc=YOUR_DOC_ID
+            </div>
+            <p style="margin-top: 10px">
+              <strong>Enter your document ID below:</strong>
+            </p>
+            <input
+              type="text"
+              id="docId"
+              placeholder="Enter document ID..."
+              style="
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #e2e8f0;
+                border-radius: 8px;
+                margin-bottom: 10px;
+                font-size: 14px;
+              "
+            />
+            <button onclick="openWithDocId()" class="btn btn-secondary">
+              Verify This Document
+            </button>
+          </div>
+
+          <!-- Option 4: Test Widget Below -->
+          <div class="test-option">
+            <h3>⚡ Option 4: Test Widget Right Here</h3>
+            <p>Try the JavaScript widget embedded on this page.</p>
+            <button onclick="showWidget()" class="btn btn-secondary">
+              Load Widget Below
+            </button>
+          </div>
+        </div>
+
+        <!-- Widget Test Area -->
+        <div id="widgetArea" class="widget-container" style="display: none">
+          <h3 style="color: #2d3748; margin-bottom: 20px; text-align: center">
+            Live Widget Test <span class="badge">INTERACTIVE</span>
+          </h3>
+          <div id="xertiq-verify-widget"></div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="info-box" style="margin-top: 30px">
+          <h4>💡 How to Get a Document ID</h4>
+          <ul>
+            <li>
+              Log in to your XertiQ account at
+              <a
+                href="https://xertiq-frontend.vercel.app/"
+                target="_blank"
+                style="color: #667eea"
+                >xertiq-frontend.vercel.app</a
+              >
+            </li>
+            <li>Upload/create a certificate or document</li>
+            <li>Copy the document ID from the dashboard</li>
+            <li>Return here and paste it in Option 3 above</li>
+          </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div
+          style="
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+          "
+        >
+          <h3 style="color: #2d3748; margin-bottom: 15px">🔗 Quick Links</h3>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap">
+            <a
+              href="https://xertiq-frontend.vercel.app/"
+              target="_blank"
+              class="btn"
+            >
+              Main Dashboard
+            </a>
+            <a
+              href="https://xertiq-frontend.vercel.app/login"
+              target="_blank"
+              class="btn"
+            >
+              Login
+            </a>
+            <a href="index.html" class="btn btn-secondary"> ← Back to Home </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div
+        style="text-align: center; color: white; opacity: 0.9; margin-top: 20px"
+      >
+        <p>
+          <strong>XertiQ</strong> - Blockchain-Secured Document Verification
+        </p>
+        <p style="font-size: 14px; margin-top: 5px">
+          Test Page for Third-Party Integration
+        </p>
+      </div>
+    </div>
+
+    <!-- Load Widget Script -->
+    <script src="https://xertiq-frontend.vercel.app/embed-widget.js"></script>
+
+    <script>
+      // Function to open verification with document ID
+      function openWithDocId() {
+        const docId = document.getElementById("docId").value.trim();
+        if (!docId) {
+          alert("Please enter a document ID first!");
+          return;
+        }
+        const url = `https://xertiq-frontend.vercel.app/verify?doc=${encodeURIComponent(
+          docId
+        )}`;
+        window.open(url, "_blank");
+      }
+
+      // Function to show widget on this page
+      function showWidget() {
+        const widgetArea = document.getElementById("widgetArea");
+        widgetArea.style.display = "block";
+
+        // Scroll to widget
+        widgetArea.scrollIntoView({ behavior: "smooth" });
+
+        // Initialize widget if not already done
+        if (window.XertiQWidget) {
+          XertiQWidget.init({
+            container: "xertiq-verify-widget",
+          });
+        }
+      }
+
+      // Allow Enter key in document ID input
+      document
+        .getElementById("docId")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            openWithDocId();
+          }
+        });
+    </script>
+  </body>
+</html>

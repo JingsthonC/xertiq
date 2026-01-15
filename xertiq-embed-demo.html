@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XertiQ Widget Demo - Third Party Integration</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header {
+        text-align: center;
+        color: white;
+        margin-bottom: 40px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .demo-card {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .demo-card h2 {
+        color: #2d3748;
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+      }
+
+      .demo-card p {
+        color: #718096;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .code-block {
+        background: #1a202c;
+        color: #e2e8f0;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 20px 0;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .code-block code {
+        display: block;
+        white-space: pre;
+      }
+
+      .widget-demo {
+        margin-top: 20px;
+        padding: 20px;
+        background: #f7fafc;
+        border-radius: 12px;
+        border: 2px dashed #cbd5e0;
+      }
+
+      .integration-methods {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .integration-methods h2 {
+        color: #2d3748;
+        margin-bottom: 30px;
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      .method-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .method-card {
+        padding: 24px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        transition: all 0.3s;
+      }
+
+      .method-card:hover {
+        border-color: #667eea;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .method-card h3 {
+        color: #667eea;
+        margin-bottom: 12px;
+        font-size: 1.3rem;
+      }
+
+      .method-card ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .method-card li {
+        color: #4a5568;
+        margin-bottom: 8px;
+        padding-left: 24px;
+        position: relative;
+      }
+
+      .method-card li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #48bb78;
+        font-weight: bold;
+      }
+
+      .footer {
+        text-align: center;
+        color: white;
+        padding: 20px;
+        opacity: 0.9;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #48bb78;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-left: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .demo-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .header h1 {
+          font-size: 2rem;
+        }
+
+        .demo-card,
+        .integration-methods {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1>🛡️ XertiQ Embeddable Widget Demo</h1>
+        <p>Blockchain-Secured Document Verification for Your Website</p>
+        <p style="font-size: 0.9rem; margin-top: 10px">
+          Third Party Integration Test Page
+          <span class="badge">Live Demo</span>
+        </p>
+      </div>
+
+      <!-- Integration Methods -->
+      <div class="integration-methods">
+        <h2>🚀 Integration Methods</h2>
+        <div class="method-grid">
+          <div class="method-card">
+            <h3>📦 Method 1: Direct Embed</h3>
+            <ul>
+              <li>Simple script tag</li>
+              <li>Auto-initialization</li>
+              <li>No configuration needed</li>
+              <li>Perfect for basic use</li>
+            </ul>
+          </div>
+          <div class="method-card">
+            <h3>🎯 Method 2: Auto-Verify</h3>
+            <ul>
+              <li>Pre-fill document ID</li>
+              <li>Instant verification</li>
+              <li>Great for QR codes</li>
+              <li>One-click verification</li>
+            </ul>
+          </div>
+          <div class="method-card">
+            <h3>⚙️ Method 3: Programmatic</h3>
+            <ul>
+              <li>Full JavaScript control</li>
+              <li>Custom configuration</li>
+              <li>Dynamic initialization</li>
+              <li>Advanced use cases</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo Examples -->
+      <div class="demo-grid">
+        <!-- Example 1: Basic Embed -->
+        <div class="demo-card">
+          <h2>📦 Basic Embed Widget</h2>
+          <p>
+            Simple integration with auto-initialization. Just add a div and
+            script tag!
+          </p>
+
+          <div class="code-block">
+            <code
+              >&lt;!-- Add this div where you want the widget --&gt; &lt;div
+              id="xertiq-verify-widget"&gt;&lt;/div&gt; &lt;!-- Add the widget
+              script --&gt; &lt;script
+              src="https://xertiq-frontend.vercel.app/embed-widget.js"&gt;&lt;/script&gt;</code
+            >
+          </div>
+
+          <div class="widget-demo">
+            <div id="xertiq-verify-widget-basic"></div>
+          </div>
+        </div>
+
+        <!-- Example 2: Auto-Verify with Document ID -->
+        <div class="demo-card">
+          <h2>🎯 Auto-Verify Widget</h2>
+          <p>
+            Automatically verify a specific document using data attributes.
+            Perfect for certificate verification pages!
+          </p>
+
+          <div class="code-block">
+            <code
+              >&lt;!-- Widget with auto-verification --&gt; &lt;div
+              id="xertiq-verify-widget" data-doc="cert_certificate_Name_123"&gt;
+              &lt;/div&gt; &lt;script
+              src="https://xertiq-frontend.vercel.app/embed-widget.js"&gt;&lt;/script&gt;</code
+            >
+          </div>
+
+          <div class="widget-demo">
+            <p style="color: #718096; font-size: 14px; margin-bottom: 15px">
+              ℹ️ This example shows auto-verification. In production, replace
+              with a valid document ID.
+            </p>
+            <div
+              id="xertiq-verify-widget-auto"
+              data-doc="your_certificate_id_here"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example 3: Programmatic Initialization -->
+      <div class="demo-card" style="margin-bottom: 40px">
+        <h2>⚙️ Programmatic Initialization</h2>
+        <p>
+          Full control over widget initialization with custom configuration.
+        </p>
+
+        <div class="code-block">
+          <code
+            >&lt;div id="my-custom-widget"&gt;&lt;/div&gt; &lt;script
+            src="https://xertiq-frontend.vercel.app/embed-widget.js"&gt;&lt;/script&gt;
+            &lt;script&gt; // Initialize with custom config XertiQWidget.init({
+            container: 'my-custom-widget', docId: 'cert_certificate_Name_123',
+            // Optional apiUrl: 'https://your-api.com/api' // Optional });
+            &lt;/script&gt;</code
+          >
+        </div>
+
+        <div class="widget-demo">
+          <div id="xertiq-verify-widget-programmatic"></div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          <strong>XertiQ</strong> - Blockchain-Secured Document Verification
+          Platform
+        </p>
+        <p style="font-size: 14px; margin-top: 10px">
+          This demo page can be hosted on GitHub Pages, Netlify, or any static
+          hosting service
+        </p>
+      </div>
+    </div>
+
+    <!-- Load the XertiQ Widget Script -->
+    <script src="https://xertiq-frontend.vercel.app/embed-widget.js"></script>
+
+    <!-- Initialize widgets programmatically for demo purposes -->
+    <script>
+      // Wait for widget script to load
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize basic widget
+        XertiQWidget.init({
+          container: "xertiq-verify-widget-basic",
+        });
+
+        // Initialize auto-verify widget
+        XertiQWidget.init({
+          container: "xertiq-verify-widget-auto",
+        });
+
+        // Initialize programmatic widget
+        XertiQWidget.init({
+          container: "xertiq-verify-widget-programmatic",
+        });
+      });
+    </script>
+  </body>
+</html>

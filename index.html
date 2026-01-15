@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="XertiQ - Blockchain-Secured Document Verification. Embed verification widgets on any website."
+    />
+    <meta
+      name="keywords"
+      content="blockchain, certificate verification, document verification, embeddable widget"
+    />
+    <title>XertiQ - Blockchain Document Verification Platform</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #2d3748;
+        --secondary: #4a5568;
+        --accent: #667eea;
+        --success: #48bb78;
+        --light: #f7fafc;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--primary);
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      nav {
+        background: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+
+      nav .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 100px 20px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        animation: fadeInUp 0.8s;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        opacity: 0.95;
+        animation: fadeInUp 0.8s 0.2s both;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s 0.4s both;
+      }
+
+      .btn {
+        padding: 15px 35px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        background: white;
+        color: var(--accent);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        color: var(--accent);
+      }
+
+      /* Features Section */
+      .features {
+        padding: 80px 20px;
+        background: var(--light);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: var(--primary);
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        text-align: center;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--primary);
+      }
+
+      .feature-card p {
+        color: var(--secondary);
+        line-height: 1.8;
+      }
+
+      /* Demo Section */
+      .demo {
+        padding: 80px 20px;
+        background: white;
+      }
+
+      .demo-tabs {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .tab-btn {
+        padding: 12px 30px;
+        background: var(--light);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        color: var(--secondary);
+      }
+
+      .tab-btn.active {
+        background: var(--accent);
+        color: white;
+      }
+
+      .tab-btn:hover {
+        background: var(--accent);
+        color: white;
+      }
+
+      .tab-content {
+        display: none;
+        animation: fadeIn 0.5s;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .code-example {
+        background: #1a202c;
+        color: #e2e8f0;
+        padding: 30px;
+        border-radius: 12px;
+        overflow-x: auto;
+        margin: 20px 0;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .widget-preview {
+        background: var(--light);
+        padding: 40px;
+        border-radius: 16px;
+        margin-top: 30px;
+        border: 2px dashed #cbd5e0;
+      }
+
+      /* How It Works */
+      .how-it-works {
+        padding: 80px 20px;
+        background: var(--light);
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .step {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        position: relative;
+        text-align: center;
+      }
+
+      .step-number {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 50px;
+        background: var(--accent);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+
+      .step h3 {
+        margin-top: 20px;
+        margin-bottom: 15px;
+        color: var(--primary);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--primary);
+        color: white;
+        padding: 60px 20px 30px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-section a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-section a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+
+      /* Live Demo Badge */
+      .live-badge {
+        display: inline-block;
+        background: var(--success);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-left: 10px;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <a href="#" class="logo"> 🛡️ XertiQ </a>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#demo">Live Demo</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#docs">Docs</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>🛡️ Blockchain-Secured Document Verification</h1>
+      <p>Embed verification widgets on any website - just like HubSpot forms</p>
+      <div class="cta-buttons">
+        <a href="#demo" class="btn btn-primary">Try Live Demo</a>
+        <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <div class="container">
+        <h2 class="section-title">Why Choose XertiQ?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Lightning Fast</h3>
+            <p>
+              Lightweight widget that loads instantly. No performance impact on
+              your website.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Easy Integration</h3>
+            <p>
+              Simple copy-paste code. Works with WordPress, Shopify, React, and
+              any website.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Blockchain Secured</h3>
+            <p>
+              Powered by Solana blockchain for immutable, tamper-proof
+              verification.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>Mobile Responsive</h3>
+            <p>Perfect experience on desktop, tablet, and mobile devices.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🚫</div>
+            <h3>No iFrames Needed</h3>
+            <p>Direct DOM injection for seamless integration and better SEO.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Auto-Verification</h3>
+            <p>
+              Support for QR codes and pre-filled document IDs for instant
+              verification.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo">
+      <div class="container">
+        <h2 class="section-title">
+          Live Demo <span class="live-badge">LIVE</span>
+        </h2>
+
+        <div class="demo-tabs">
+          <button class="tab-btn active" onclick="showTab('javascript')">
+            JavaScript Widget
+          </button>
+          <button class="tab-btn" onclick="showTab('iframe')">
+            iframe Embed
+          </button>
+          <button class="tab-btn" onclick="showTab('link')">Direct Link</button>
+        </div>
+
+        <!-- JavaScript Widget Tab -->
+        <div id="javascript" class="tab-content active">
+          <h3 style="text-align: center; margin-bottom: 20px">
+            Method 1: JavaScript Widget (Recommended)
+          </h3>
+          <p
+            style="
+              text-align: center;
+              color: var(--secondary);
+              margin-bottom: 30px;
+            "
+          >
+            HubSpot-style embedding - No iframes, pure JavaScript
+          </p>
+
+          <div class="code-example">
+            &lt;!-- Step 1: Add container div --&gt; &lt;div
+            id="xertiq-verify-widget"&gt;&lt;/div&gt; &lt;!-- Step 2: Add widget
+            script --&gt; &lt;script
+            src="https://xertiq-frontend.vercel.app/embed-widget.js"&gt;&lt;/script&gt;
+            &lt;!-- That's it! Widget auto-initializes --&gt;
+          </div>
+
+          <div class="widget-preview">
+            <h4 style="text-align: center; margin-bottom: 20px">
+              Live Preview:
+            </h4>
+            <div id="xertiq-verify-widget-demo"></div>
+          </div>
+        </div>
+
+        <!-- iframe Tab -->
+        <div id="iframe" class="tab-content">
+          <h3 style="text-align: center; margin-bottom: 20px">
+            Method 2: iframe Embed
+          </h3>
+          <p
+            style="
+              text-align: center;
+              color: var(--secondary);
+              margin-bottom: 30px;
+            "
+          >
+            Traditional iframe embedding - Works everywhere
+          </p>
+
+          <div class="code-example">
+            &lt;iframe src="https://xertiq-frontend.vercel.app/embed/verify"
+            width="100%" height="700" frameborder="0" style="border: 1px solid
+            #e0e0e0; border-radius: 12px;" &gt;&lt;/iframe&gt;
+          </div>
+
+          <div class="widget-preview">
+            <h4 style="text-align: center; margin-bottom: 20px">
+              Live Preview:
+            </h4>
+            <iframe
+              src="https://xertiq-frontend.vercel.app/embed/verify"
+              width="100%"
+              height="700"
+              frameborder="0"
+              style="border: 1px solid #cbd5e0; border-radius: 12px"
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- Direct Link Tab -->
+        <div id="link" class="tab-content">
+          <h3 style="text-align: center; margin-bottom: 20px">
+            Method 3: Direct Link
+          </h3>
+          <p
+            style="
+              text-align: center;
+              color: var(--secondary);
+              margin-bottom: 30px;
+            "
+          >
+            Simple hyperlink to verification page
+          </p>
+
+          <div class="code-example">
+            &lt;!-- Basic link --&gt; &lt;a
+            href="https://xertiq-frontend.vercel.app/verify"&gt; Verify Document
+            &lt;/a&gt; &lt;!-- With pre-filled document ID --&gt; &lt;a
+            href="https://xertiq-frontend.vercel.app/verify?doc=YOUR_DOC_ID"&gt;
+            Verify This Certificate &lt;/a&gt; &lt;!-- As a button --&gt;
+            &lt;button
+            onclick="window.open('https://xertiq-frontend.vercel.app/verify?doc=YOUR_DOC_ID')"&gt;
+            🔍 Verify Document &lt;/button&gt;
+          </div>
+
+          <div class="widget-preview" style="text-align: center">
+            <h4 style="margin-bottom: 20px">Live Examples:</h4>
+            <div
+              style="
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+              "
+            >
+              <a
+                href="https://xertiq-frontend.vercel.app/verify"
+                target="_blank"
+                class="btn btn-primary"
+              >
+                Verify Document
+              </a>
+              <a
+                href="https://xertiq-frontend.vercel.app/verify?doc=test_certificate"
+                target="_blank"
+                class="btn btn-secondary"
+                style="color: var(--primary); border-color: var(--primary)"
+              >
+                Verify Test Certificate
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+      <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Copy Code</h3>
+            <p>
+              Choose your preferred integration method and copy the simple embed
+              code.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Paste to Website</h3>
+            <p>
+              Add the code to your website - works with WordPress, Shopify,
+              React, or any platform.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Verify Documents</h3>
+            <p>
+              Users can instantly verify documents using blockchain technology.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3>Build Trust</h3>
+            <p>
+              Increase credibility with tamper-proof, blockchain-verified
+              credentials.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="docs" class="features">
+      <div class="container">
+        <h2 class="section-title">Documentation & Resources</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Integration Guide</h3>
+            <p>
+              Complete developer documentation with examples for all platforms.
+            </p>
+            <a
+              href="xertiq-embed-demo.html"
+              target="_blank"
+              class="btn btn-primary"
+              style="margin-top: 20px; display: inline-block"
+            >
+              View Full Demo
+            </a>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🧪</div>
+            <h3>Test Pages</h3>
+            <p>
+              Interactive test pages to verify integration before deployment.
+            </p>
+            <a
+              href="widget-test.html"
+              target="_blank"
+              class="btn btn-primary"
+              style="margin-top: 20px; display: inline-block"
+            >
+              Test Widget
+            </a>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🖼️</div>
+            <h3>iframe Examples</h3>
+            <p>Learn how to embed using traditional iframe methods.</p>
+            <a
+              href="iframe-test.html"
+              target="_blank"
+              class="btn btn-primary"
+              style="margin-top: 20px; display: inline-block"
+            >
+              iframe Tests
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>🛡️ XertiQ</h3>
+          <p style="color: rgba(255, 255, 255, 0.8)">
+            Blockchain-secured document verification platform. Trusted by
+            institutions worldwide.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#demo">Live Demo</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="xertiq-embed-demo.html">Full Demo</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="widget-test.html">Widget Test</a></li>
+            <li><a href="iframe-test.html">iframe Test</a></li>
+            <li>
+              <a href="https://xertiq-frontend.vercel.app/" target="_blank"
+                >Main App</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://xertiq-frontend.vercel.app/embed/verify"
+                target="_blank"
+                >Embed Widget</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <ul>
+            <li><a href="mailto:support@xertiq.com">Support</a></li>
+            <li>
+              <a href="https://github.com/xertiq" target="_blank">GitHub</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/xertiq" target="_blank">Twitter</a>
+            </li>
+            <li><a href="https://xertiq.com" target="_blank">Website</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2026 XertiQ. All rights reserved. | Powered by Solana
+          Blockchain
+        </p>
+      </div>
+    </footer>
+
+    <!-- Widget Script -->
+    <script src="https://xertiq-frontend.vercel.app/embed-widget.js"></script>
+
+    <!-- Initialize Demo Widget -->
+    <script>
+      // Initialize widget in demo section
+      if (window.XertiQWidget) {
+        XertiQWidget.init({
+          container: "xertiq-verify-widget-demo",
+        });
+      }
+
+      // Tab switching functionality
+      function showTab(tabName) {
+        // Hide all tabs
+        const tabs = document.querySelectorAll(".tab-content");
+        tabs.forEach((tab) => tab.classList.remove("active"));
+
+        // Remove active class from all buttons
+        const buttons = document.querySelectorAll(".tab-btn");
+        buttons.forEach((btn) => btn.classList.remove("active"));
+
+        // Show selected tab
+        document.getElementById(tabName).classList.add("active");
+
+        // Add active class to clicked button
+        event.target.classList.add("active");
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
