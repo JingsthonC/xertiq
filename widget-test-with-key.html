@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XertiQ Widget Test - With Verification Key</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      h1 {
+        color: white;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .example {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      }
+      .example h2 {
+        margin-top: 0;
+        color: #2d3748;
+        font-size: 1.25rem;
+      }
+      .code {
+        background: #1a202c;
+        color: #68d391;
+        padding: 1rem;
+        border-radius: 8px;
+        font-family: "Courier New", monospace;
+        font-size: 0.875rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔐 XertiQ Widget - Verification Key Test</h1>
+
+      <!-- Example 1: Auto-init with data attributes (including key) -->
+      <div class="example">
+        <h2>📝 Example 1: Auto-init with Document ID and Key</h2>
+        <div class="code">
+          &lt;div id="xertiq-verify-widget"
+          data-doc="cert_certificate_Jingsthon_Castillo_1_1768806919897_91ygb2d3eu"
+          data-key="9683ee2a988bd1519efadd6b0d4792091a64c5ae0a78b4a214274a4a31a21239"&gt;
+          &lt;/div&gt; &lt;script
+          src="xertiq_frontend/public/embed-widget.js"&gt;&lt;/script&gt;
+        </div>
+        <div
+          id="xertiq-verify-widget"
+          data-doc="cert_certificate_Jingsthon_Castillo_1_1768806919897_91ygb2d3eu"
+          data-key="9683ee2a988bd1519efadd6b0d4792091a64c5ae0a78b4a214274a4a31a21239"
+        ></div>
+      </div>
+
+      <!-- Example 2: Manual verification with key input -->
+      <div class="example">
+        <h2>
+          🔍 Example 2: Manual Verification Form (with optional key field)
+        </h2>
+        <div class="code">
+          &lt;div id="manual-widget"&gt;&lt;/div&gt; &lt;script&gt;
+          XertiQWidget.init({ container: 'manual-widget' }); &lt;/script&gt;
+        </div>
+        <div id="manual-widget"></div>
+      </div>
+
+      <!-- Example 3: Programmatic init with key -->
+      <div class="example">
+        <h2>⚙️ Example 3: Programmatic Init with Pre-filled Key</h2>
+        <div class="code">
+          &lt;div id="programmatic-widget"&gt;&lt;/div&gt; &lt;script&gt;
+          XertiQWidget.init({ container: 'programmatic-widget', docId:
+          'cert_certificate_Jingsthon_Castillo_1_1768806919897_91ygb2d3eu',
+          accessKey:
+          '9683ee2a988bd1519efadd6b0d4792091a64c5ae0a78b4a214274a4a31a21239' });
+          &lt;/script&gt;
+        </div>
+        <div id="programmatic-widget"></div>
+      </div>
+    </div>
+
+    <!-- Load the widget -->
+    <script src="xertiq_frontend/public/embed-widget.js"></script>
+
+    <!-- Initialize manual and programmatic widgets -->
+    <script>
+      // Example 2 - Manual form (auto-initialized by widget if element exists)
+      XertiQWidget.init({
+        container: "manual-widget",
+      });
+
+      // Example 3 - Programmatic with key
+      XertiQWidget.init({
+        container: "programmatic-widget",
+        docId: "cert_certificate_Jingsthon_Castillo_1_1768806919897_91ygb2d3eu",
+        accessKey:
+          "9683ee2a988bd1519efadd6b0d4792091a64c5ae0a78b4a214274a4a31a21239",
+      });
+    </script>
+  </body>
+</html>

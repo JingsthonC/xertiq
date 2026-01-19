@@ -268,9 +268,13 @@
           <div class="code-block">
             <code
               >&lt;!-- Widget with auto-verification --&gt; &lt;div
-              id="xertiq-verify-widget" data-doc="cert_certificate_Name_123"&gt;
+              id="xertiq-verify-widget" 
+              data-doc="cert_certificate_Name_123"
+              data-key="your_verification_key"&gt;
               &lt;/div&gt; &lt;script
-              src="https://xertiq-frontend.vercel.app/embed-widget.js"&gt;&lt;/script&gt;</code
+              src="https://xertiq-frontend.vercel.app/embed-widget.js"&gt;&lt;/script&gt;
+              
+&lt;!-- Note: data-key is optional but required for protected documents --&gt;</code
             >
           </div>
 
@@ -299,8 +303,11 @@
             >&lt;div id="my-custom-widget"&gt;&lt;/div&gt; &lt;script
             src="https://xertiq-frontend.vercel.app/embed-widget.js"&gt;&lt;/script&gt;
             &lt;script&gt; // Initialize with custom config XertiQWidget.init({
-            container: 'my-custom-widget', docId: 'cert_certificate_Name_123',
-            // Optional apiUrl: 'https://your-api.com/api' // Optional });
+            container: 'my-custom-widget', 
+            docId: 'cert_certificate_Name_123',
+            accessKey: 'your_verification_key', // Optional but required for protected docs
+            // Optional apiUrl: 'https://your-api.com/api' // Optional 
+            });
             &lt;/script&gt;</code
           >
         </div>

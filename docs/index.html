@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="XertiQ - Blockchain-Secured Document Verification Widget Demo"
+    />
+    <title>XertiQ Verification Widget - Third-Party Integration Demo</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(135deg, #4a48c4 0%, #3d2d7a 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header {
+        text-align: center;
+        color: white;
+        margin-bottom: 40px;
+        padding: 40px 20px;
+      }
+
+      .header h1 {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .header .badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        margin-top: 10px;
+      }
+
+      .info-banner {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        color: #856404;
+      }
+
+      .info-banner h3 {
+        margin-bottom: 10px;
+      }
+
+      .info-banner code {
+        background: rgba(0, 0, 0, 0.1);
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: monospace;
+      }
+
+      .widget-section {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .widget-section h2 {
+        color: #4a48c4;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+
+      .code-block {
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 20px 0;
+        font-family: "Monaco", "Menlo", monospace;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        position: relative;
+      }
+
+      .copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #4a48c4;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.85rem;
+      }
+
+      .copy-btn:hover {
+        background: #3d2d7a;
+      }
+
+      .architecture {
+        background: rgba(74, 72, 196, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .architecture h3 {
+        color: #4a48c4;
+        margin-bottom: 15px;
+      }
+
+      .architecture ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .architecture li {
+        padding: 10px;
+        margin: 5px 0;
+        background: white;
+        border-radius: 4px;
+        border-left: 3px solid #00e5ff;
+      }
+
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 2rem;
+        }
+        .widget-section {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <div style="margin-bottom: 15px">
+          <img
+            src="./xertiq_logo.png"
+            alt="XertiQ"
+            style="height: 60px; width: auto"
+          />
+        </div>
+        <h1>XertiQ Verification Widget</h1>
+        <p style="font-size: 1.2rem; margin: 10px 0">
+          Third-Party Integration Demo
+        </p>
+        <div class="badge">
+          📍 This page hosted on GitHub Pages<br />
+          🔗 Widget loaded from Vercel
+        </div>
+      </div>
+
+      <!-- Architecture Info -->
+      <div class="widget-section">
+        <div class="architecture">
+          <h3>🏗️ Architecture Setup:</h3>
+          <ul>
+            <li>
+              <strong>GitHub Pages:</strong> This demo page (simulates
+              third-party website)
+            </li>
+            <li><strong>Vercel:</strong> Widget script + Backend API</li>
+            <li>
+              <strong>Integration:</strong> GitHub Pages loads widget from
+              Vercel URL
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Important Notice -->
+      <div class="widget-section">
+        <div class="info-banner">
+          <h3>⚠️ Setup Required:</h3>
+          <p><strong>Before the widget works, you need to:</strong></p>
+          <ol style="margin: 15px 0 0 20px; line-height: 1.8">
+            <li>Deploy your backend to Vercel</li>
+            <li>
+              Update <code>VERCEL_WIDGET_URL</code> below with your Vercel URL
+            </li>
+            <li>Make sure CORS allows GitHub Pages origin</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Live Demo -->
+      <div class="widget-section">
+        <h2>📺 Live Demo</h2>
+        <p style="color: #666; margin-bottom: 20px">
+          This demonstrates how a third-party website would embed your widget:
+        </p>
+
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 12px">
+          <!-- XertiQ Widget Container -->
+          <div id="xertiq-verify-widget"></div>
+        </div>
+      </div>
+
+      <!-- Integration Code -->
+      <div class="widget-section">
+        <h2>💻 Integration Code</h2>
+        <p style="color: #666; margin-bottom: 20px">
+          This is what third-party websites would add to their pages:
+        </p>
+
+        <div class="code-block">
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          <code
+            >&lt;!-- Add widget container --&gt; &lt;div
+            id="xertiq-verify-widget"&gt;&lt;/div&gt; &lt;!-- Load widget from
+            your Vercel deployment --&gt; &lt;script
+            src="https://your-app.vercel.app/xertiq-widget.js"&gt;&lt;/script&gt;</code
+          >
+        </div>
+
+        <h3 style="margin-top: 30px; color: #4a48c4">
+          With Auto-Verification:
+        </h3>
+        <div class="code-block">
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          <code
+            >&lt;div id="xertiq-verify-widget"
+            data-doc="cert_certificate_Name_123_abc"
+            data-key="your_verification_key"&gt;&lt;/div&gt; &lt;script
+            src="https://your-app.vercel.app/xertiq-widget.js"&gt;&lt;/script&gt;
+            
+&lt;!-- Note: data-key is optional but required for protected documents --&gt;</code
+          >
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div
+        class="widget-section"
+        style="
+          text-align: center;
+          background: linear-gradient(135deg, #4a48c4, #3d2d7a);
+          color: white;
+        "
+      >
+        <h2
+          style="
+            color: white;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+          "
+        >
+          <img
+            src="./xertiq_logo.png"
+            alt="XertiQ"
+            style="height: 30px; width: auto"
+          />
+          Powered by XertiQ
+        </h2>
+        <p style="opacity: 0.9; margin: 0">
+          Blockchain-Secured Document Verification<br />
+          Demo hosted on GitHub Pages • Widget from Vercel
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // CONFIGURATION: Update this with your Vercel deployment URL
+      const VERCEL_WIDGET_URL = "https://your-app.vercel.app/xertiq-widget.js";
+
+      // For local testing, you can use localhost:
+      // const VERCEL_WIDGET_URL = 'http://localhost:3000/xertiq-widget.js';
+
+      // Load widget from Vercel
+      (function () {
+        const script = document.createElement("script");
+        script.src = VERCEL_WIDGET_URL;
+        script.async = true;
+
+        script.onerror = function () {
+          document.getElementById("xertiq-verify-widget").innerHTML =
+            '<div style="padding: 30px; background: #fff3cd; border: 2px solid #ffc107; border-radius: 12px; color: #856404; text-align: center;">' +
+            '<h3 style="margin-bottom: 15px;">⚠️ Widget Script Not Found</h3>' +
+            '<p style="margin-bottom: 10px;">Could not load widget from: <code style="background: rgba(0,0,0,0.1); padding: 2px 8px; border-radius: 3px;">' +
+            VERCEL_WIDGET_URL +
+            "</code></p>" +
+            "<p><strong>To fix:</strong></p>" +
+            '<ol style="text-align: left; margin: 15px auto; max-width: 500px; line-height: 1.8;">' +
+            "<li>Deploy your backend to Vercel</li>" +
+            "<li>Update <code>VERCEL_WIDGET_URL</code> in this HTML file</li>" +
+            "<li>Refresh this page</li>" +
+            "</ol>" +
+            '<p style="margin-top: 15px; font-size: 0.9em;">For local testing, use: <code style="background: rgba(0,0,0,0.1); padding: 2px 8px; border-radius: 3px;">http://localhost:3000/xertiq-widget.js</code></p>' +
+            "</div>";
+        };
+
+        document.body.appendChild(script);
+      })();
+
+      // Copy code functionality
+      function copyCode(btn) {
+        const code = btn.nextElementSibling.textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          const original = btn.textContent;
+          btn.textContent = "✓ Copied!";
+          setTimeout(() => (btn.textContent = original), 2000);
+        });
+      }
+    </script>
+  </body>
+</html>

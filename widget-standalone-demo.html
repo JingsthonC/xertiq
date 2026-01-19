@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XertiQ Widget - Standalone Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+
+      h1 {
+        text-align: center;
+        color: #4a48c4;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .widget-container {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .info-box {
+        background: #e3f2fd;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border-left: 4px solid #00e5ff;
+      }
+
+      .info-box strong {
+        display: block;
+        margin-bottom: 8px;
+        color: #4a48c4;
+      }
+
+      .code {
+        background: #f5f5f5;
+        padding: 3px 8px;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎓 XertiQ Certificate Verification</h1>
+    <p class="subtitle">Standalone Demo - No React/Vite Required</p>
+
+    <div class="info-box">
+      <strong>📝 How to use this demo:</strong>
+      <ol style="margin: 10px 0 0 20px; color: #666; line-height: 1.8">
+        <li>
+          Copy
+          <span class="code">xertiq_frontend/public/xertiq-widget.js</span> to
+          the same folder as this HTML file
+        </li>
+        <li>
+          Open this HTML file directly in your browser (no server needed for
+          demo)
+        </li>
+        <li>
+          Or serve it with any simple HTTP server:
+          <span class="code">python -m http.server 8000</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="info-box">
+      <strong>🔗 Example Document ID:</strong>
+      <code
+        style="
+          background: white;
+          padding: 8px;
+          display: block;
+          margin-top: 8px;
+          border-radius: 4px;
+        "
+      >
+        cert_certificate_Jingsthon_Castillo_1_1768197767683_8ee3os6r6ml
+      </code>
+    </div>
+
+    <div class="widget-container">
+      <!-- XertiQ Verification Widget -->
+      <!-- The widget will auto-initialize and verify the document -->
+      <!-- Note: data-api-url is optional - defaults to http://localhost:3000/api for file:// protocol -->
+      <div
+        id="xertiq-verify-widget"
+        data-doc="cert_certificate_Jingsthon_Castillo_1_1768197767683_8ee3os6r6ml"
+      ></div>
+    </div>
+
+    <div
+      style="
+        text-align: center;
+        margin-top: 30px;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+      "
+    >
+      <h3 style="color: #4a48c4; margin-bottom: 15px">Integration Code</h3>
+      <pre
+        style="
+          background: #2d2d2d;
+          color: #f8f8f2;
+          padding: 20px;
+          border-radius: 8px;
+          text-align: left;
+          overflow-x: auto;
+        "
+      ><code>&lt;!-- Add widget container --&gt;
+&lt;div id="xertiq-verify-widget" 
+     data-doc="YOUR_DOCUMENT_ID"
+     data-key="YOUR_VERIFICATION_KEY"
+     data-api-url="https://your-api.com/api"&gt;
+&lt;/div&gt;
+
+&lt;!-- Add widget script --&gt;
+&lt;script src="xertiq-widget.js"&gt;&lt;/script&gt;
+
+&lt;!-- Note: data-key is optional but required for protected documents --&gt;</code></pre>
+    </div>
+
+    <!-- XertiQ Widget Script - must be in same folder or use absolute URL -->
+    <script>
+      // For development, try to load from different possible locations
+      (function () {
+        const scriptSources = [
+          "./xertiq-widget.js", // Same folder
+          "../xertiq_frontend/public/xertiq-widget.js", // Relative path
+          "http://localhost:3000/xertiq-widget.js", // Backend serving it
+        ];
+
+        let loaded = false;
+        let attempts = 0;
+
+        function tryLoadScript(index) {
+          if (index >= scriptSources.length || loaded) {
+            if (!loaded) {
+              document.getElementById("xertiq-verify-widget").innerHTML =
+                '<div style="padding: 20px; background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; color: #856404;">' +
+                "<strong>⚠️ Widget Script Not Found</strong><br><br>" +
+                "Please copy <code>xertiq-widget.js</code> to the same folder as this HTML file.<br>" +
+                "Or start the backend server that serves the widget script." +
+                "</div>";
+            }
+            return;
+          }
+
+          const script = document.createElement("script");
+          script.src = scriptSources[index];
+          script.async = true;
+
+          script.onload = function () {
+            loaded = true;
+            console.log("Widget script loaded from:", scriptSources[index]);
+          };
+
+          script.onerror = function () {
+            attempts++;
+            console.log("Failed to load from:", scriptSources[index]);
+            tryLoadScript(index + 1);
+          };
+
+          document.body.appendChild(script);
+        }
+
+        tryLoadScript(0);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Widget Test with Key</title>
+  </head>
+  <body style="margin: 0; padding: 20px; background: #f7fafc">
+    <h1 style="text-align: center; color: #2d3748">
+      XertiQ Widget - Quick Test
+    </h1>
+
+    <!-- Widget will auto-verify with the provided doc ID and key -->
+    <div
+      id="xertiq-verify-widget"
+      data-doc="cert_certificate_Jingsthon_Castillo_1_1768806919897_91ygb2d3eu"
+      data-key="9683ee2a988bd1519efadd6b0d4792091a64c5ae0a78b4a214274a4a31a21239"
+    ></div>
+
+    <!-- Load from local file for testing -->
+    <script src="xertiq_frontend/public/embed-widget.js"></script>
+
+    <!-- Or load from production CDN when deployed -->
+    <!-- <script src="https://xertiq-frontend.vercel.app/embed-widget.js"></script> -->
+  </body>
+</html>
