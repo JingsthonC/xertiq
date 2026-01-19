@@ -219,32 +219,172 @@
       <!-- Integration Code -->
       <div class="widget-section">
         <h2>💻 Integration Code</h2>
-        <p style="color: #666; margin-bottom: 20px">
-          This is what third-party websites would add to their pages:
-        </p>
 
+        <!-- Clear Instructions -->
+        <div
+          style="
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+          "
+        >
+          <h3 style="color: #1976d2; margin-bottom: 15px; font-size: 1.1rem">
+            📋 What You Need:
+          </h3>
+          <div style="color: #555; line-height: 1.8">
+            <p style="margin-bottom: 10px">
+              <strong>1. Document ID (required)</strong>
+            </p>
+            <ul style="margin-left: 25px; margin-bottom: 15px">
+              <li>
+                Example:
+                <code
+                  style="
+                    background: white;
+                    padding: 2px 6px;
+                    border-radius: 3px;
+                  "
+                  >cert_certificate_Jingsthon_Castillo_1_1768806919897_91ygb2d3eu</code
+                >
+              </li>
+              <li>Get this from the backend when you create a certificate</li>
+            </ul>
+
+            <p style="margin-bottom: 10px">
+              <strong>2. Verification Key (optional but recommended)</strong>
+            </p>
+            <ul style="margin-left: 25px; margin-bottom: 15px">
+              <li>
+                Example:
+                <code
+                  style="
+                    background: white;
+                    padding: 2px 6px;
+                    border-radius: 3px;
+                  "
+                  >9683ee2a988bd1519efadd6b0d4792091a64c5ae0a78b4a214274a4a31a21239</code
+                >
+              </li>
+              <li>Get this from the backend when you create a certificate</li>
+              <li>Required for protected/private documents</li>
+              <li>Skip this if your document is public</li>
+            </ul>
+
+            <p style="margin-bottom: 10px">
+              <strong>3. Widget Script URL</strong>
+            </p>
+            <ul style="margin-left: 25px">
+              <li>
+                Use:
+                <code
+                  style="
+                    background: white;
+                    padding: 2px 6px;
+                    border-radius: 3px;
+                  "
+                  >https://xertiq-frontend.vercel.app/embed-widget.js</code
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Option 1: Manual Search Form -->
+        <h3 style="color: #4a48c4; margin-bottom: 15px">
+          📝 Option 1: Search Form (Let Users Enter Their ID)
+        </h3>
+        <p style="color: #666; margin-bottom: 15px; font-size: 0.95rem">
+          Use this if you want users to manually enter their document ID and
+          key:
+        </p>
         <div class="code-block">
           <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           <code
-            >&lt;!-- Add widget container --&gt; &lt;div
-            id="xertiq-verify-widget"&gt;&lt;/div&gt; &lt;!-- Load widget from
-            your Vercel deployment --&gt; &lt;script
-            src="https://your-app.vercel.app/xertiq-widget.js"&gt;&lt;/script&gt;</code
+            >&lt;!-- Just add this - widget shows search form --&gt; &lt;div
+            id="xertiq-verify-widget"&gt;&lt;/div&gt; &lt;script
+            src="https://xertiq-frontend.vercel.app/embed-widget.js"&gt;&lt;/script&gt;</code
           >
         </div>
 
-        <h3 style="margin-top: 30px; color: #4a48c4">
-          With Auto-Verification:
+        <!-- Option 2: Auto-Verify -->
+        <h3 style="margin-top: 30px; color: #4a48c4; margin-bottom: 15px">
+          🎯 Option 2: Auto-Verify (Show Specific Certificate)
         </h3>
+        <p style="color: #666; margin-bottom: 15px; font-size: 0.95rem">
+          Use this to automatically verify and display a specific certificate:
+        </p>
+        <div
+          style="
+            background: #fff3cd;
+            border: 2px dashed #ffc107;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+          "
+        >
+          <p style="color: #856404; font-weight: bold; margin-bottom: 10px">
+            ⚠️ Replace These Values:
+          </p>
+          <ul style="color: #856404; margin-left: 25px; line-height: 1.8">
+            <li>
+              <code
+                style="background: white; padding: 2px 6px; border-radius: 3px"
+                >YOUR_DOCUMENT_ID_HERE</code
+              >
+              ← Paste your actual document ID here
+            </li>
+            <li>
+              <code
+                style="background: white; padding: 2px 6px; border-radius: 3px"
+                >YOUR_VERIFICATION_KEY_HERE</code
+              >
+              ← Paste your verification key here
+            </li>
+            <li>
+              Or remove
+              <code
+                style="background: white; padding: 2px 6px; border-radius: 3px"
+                >data-key</code
+              >
+              line if document is public
+            </li>
+          </ul>
+        </div>
         <div class="code-block">
           <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           <code
-            >&lt;div id="xertiq-verify-widget"
-            data-doc="cert_certificate_Name_123_abc"
-            data-key="your_verification_key"&gt;&lt;/div&gt; &lt;script
-            src="https://your-app.vercel.app/xertiq-widget.js"&gt;&lt;/script&gt;
-            
-&lt;!-- Note: data-key is optional but required for protected documents --&gt;</code
+            >&lt;!-- Copy this and replace YOUR_DOCUMENT_ID_HERE and
+            YOUR_VERIFICATION_KEY_HERE --&gt; &lt;div id="xertiq-verify-widget"
+            data-doc="<span style="background: #ffeb3b; color: #000"
+              >YOUR_DOCUMENT_ID_HERE</span
+            >" data-key="<span style="background: #ffeb3b; color: #000"
+              >YOUR_VERIFICATION_KEY_HERE</span
+            >"&gt; &lt;/div&gt; &lt;script
+            src="https://xertiq-frontend.vercel.app/embed-widget.js"&gt;&lt;/script&gt;
+            &lt;!-- Example with real values: &lt;div id="xertiq-verify-widget"
+            data-doc="cert_certificate_Jingsthon_Castillo_1_1768806919897_91ygb2d3eu"
+            data-key="9683ee2a988bd1519efadd6b0d4792091a64c5ae0a78b4a214274a4a31a21239"&gt;
+            &lt;/div&gt; --&gt;</code
+          >
+        </div>
+
+        <!-- Option 3: Public Document (No Key) -->
+        <h3 style="margin-top: 30px; color: #4a48c4; margin-bottom: 15px">
+          🌐 Option 3: Public Document (No Key Required)
+        </h3>
+        <p style="color: #666; margin-bottom: 15px; font-size: 0.95rem">
+          If your document doesn't require a key, just use the doc ID:
+        </p>
+        <div class="code-block">
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          <code
+            >&lt;div id="xertiq-verify-widget" data-doc="<span
+              style="background: #ffeb3b; color: #000"
+              >YOUR_DOCUMENT_ID_HERE</span
+            >"&gt; &lt;/div&gt; &lt;script
+            src="https://xertiq-frontend.vercel.app/embed-widget.js"&gt;&lt;/script&gt;</code
           >
         </div>
       </div>
