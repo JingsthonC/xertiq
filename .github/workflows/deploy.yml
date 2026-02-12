@@ -1,0 +1,68 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Hostinger KVM2
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script_stop: true
+          command_timeout: 10m
+          script: |
+            set -e
+            cd /var/www/xertiq
+
+            echo "=== Pulling deploy configs ==="
+            git pull origin main
+
+            echo "=== Pulling frontend ==="
+            cd xertiq_frontend
+            git pull origin main
+            npm ci --silent
+            VITE_API_BASE_URL="https://${{ secrets.DOMAIN }}/api" npm run build
+            cd ..
+
+            echo "=== Pulling backend ==="
+            cd xertiq_backend
+            git pull origin main
+            cd ..
+
+            echo "=== Rebuilding backend containers ==="
+            docker compose up -d --build --no-deps backend
+
+            echo "=== Waiting for backend to be healthy ==="
+            sleep 15
+
+            echo "=== Running database migrations ==="
+            docker compose exec -T backend npx prisma db push 2>/dev/null || \
+              docker compose exec -T backend npx prisma migrate deploy 2>/dev/null || \
+              echo "No pending migrations"
+
+            echo "=== Reloading nginx ==="
+            docker compose exec -T nginx nginx -s reload
+
+            echo "=== Health check ==="
+            sleep 5
+            curl -sf http://localhost/api/health || echo "WARNING: Health check failed"
+
+            echo "=== Deployment complete ==="
+            docker compose ps

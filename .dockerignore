@@ -1,0 +1,56 @@
+# Dependencies
+node_modules
+xertiq_frontend/node_modules
+xertiq_backend/node_modules
+
+# Build outputs
+xertiq_frontend/dist
+*.log
+
+# Environment files (use Docker secrets or env vars instead)
+.env
+.env.*
+!.env.example
+!.env.production.example
+
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test and development
+coverage
+*.test.js
+*.spec.js
+__tests__
+
+# Documentation
+*.md
+!README.md
+docs
+
+# Docker files (don't need to copy into image)
+docker-compose*.yml
+Dockerfile*
+
+# Uploads and temp files
+uploads
+temp
+*.tmp
+
+# Backup files
+backups
+*.sql
+*.sql.gz
+
+# Certificates (mounted as volumes)
+certbot
