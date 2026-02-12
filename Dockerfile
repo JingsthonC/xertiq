@@ -12,8 +12,8 @@ RUN apk add --no-cache python3 make g++
 # Copy package files
 COPY xertiq_backend/package*.json ./
 
-# Install all dependencies (including devDependencies for Prisma)
-RUN npm ci
+# Install all dependencies (--ignore-scripts: schema not copied yet, generate runs below)
+RUN npm ci --ignore-scripts
 
 # Copy Prisma schema
 COPY xertiq_backend/prisma ./prisma
@@ -40,8 +40,8 @@ RUN addgroup -g 1001 -S nodejs && \
 # Copy package files
 COPY xertiq_backend/package*.json ./
 
-# Install production dependencies only
-RUN npm ci --production && npm cache clean --force
+# Install production dependencies only (--ignore-scripts: Prisma client already built in builder stage)
+RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
 
 # Copy built artifacts from builder
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
